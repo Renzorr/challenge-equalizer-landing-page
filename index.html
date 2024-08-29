@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="title" content="Equalizer Landing Page - Frontend Mentor Challenge" />
+  <meta name="description" content="Junior Frontend Mentor Challenge" />
+  <link rel="shortcut icon" href="./public/favicon-32x32.png" type="image/x-icon" />
+
+  <link rel="stylesheet" href="./style/reset.css" />
+  <link rel="stylesheet" href="./style/index.css" />
+  <title>Equalizer Landing Page</title>
+</head>
+
+<body>
+  <h1 class="sr-only">Equalizer Landing Page</h1>
+  <div id="cursor"></div>
+
+  <main>
+    <img src="./public/img/bg-pattern-1.svg" alt="" class="bg-pattern" />
+
+    <header class="header container">
+      <a href="/">
+        <img src="./public/img/logo.svg" alt="Equalizer logo" width="147" height="33" />
+      </a>
+    </header>
+
+    <section class="hero container">
+      <div class="hero_content col">
+        <h2>We make your music sound extraordinary.</h2>
+        <p>
+          A system audio equalizer specifically designed for Android and iOS.
+          Freely tune the way your music sounds with a professional grade
+          parametric EQ & volume mixer. Control bass, mids, treble, gain
+          control, reverb, and more!
+        </p>
+      </div>
+    </section>
+
+    <section class="pre-eq-section container no-space">
+      <div class="pre-eq">
+        <img src="./public/img/illustration-app.avif" alt="" class="pre-eq__image" />
+        <div class="pre-eq__content col">
+          <h2>Premium EQ</h2>
+          <p>1
+            Get expert-level control with a robust equalizer, volume mixer,
+            and spatial audio. Take your listening experience to a whole new
+            level and access all our incredible features!
+          </p>
+          <div class="pre-eq__pricing">
+            <b>$4</b>
+            <span>/ month</span>
+          </div>
+          <div class="pre-eq__download">
+            <button class="btn" cursor-type="clickable">
+              <img src="./public/img/icon-apple.svg" alt="Apple Icon" loading="lazy" width="17" height="20" />
+              IOS Download
+            </button>
+            <button class="btn light" cursor-type="clickable">
+              <img src="./public/img/icon-android.svg" alt="Android Icon" loading="lazy" width="17" height="20" />
+              Android Download
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer container">
+      <a href="/">
+        <img src="./public/img/logo.svg" alt="Equalizer logo" loading="lazy" width="147" height="33" />
+      </a>
+      <div>
+        <p class="footer__copyright">
+          All rights reserved © Equalizer 2021 Have any problems? Contact us
+          via social media or email us at
+          <b>equalizer@example.com</b>
+        </p>
+      </div>
+      <div>
+        <ul class="footer__links">
+          <li>
+            <a href="/">
+              <img src="./public/img/icon-facebook.svg" alt="Facebook Icon" loading="lazy" width="20" height="20"
+                cursor-type="clickable" />
+            </a>
+          </li>
+          <li>
+            <a href="/" cursor-type="clickable">
+              <img src="./public/img/icon-instagram.svg" alt="Instagram Icon" loading="lazy" width="20" height="20"
+                cursor-type="clickable" />
+            </a>
+          </li>
+          <li>
+            <a href="/" cursor-type="clickable">
+              <img src="./public/img/icon-twitter.svg" alt="Twitter Icon" loading="lazy" width="20" height="20"
+                cursor-type="clickable" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    const $cursor = document.querySelector("#cursor")
+    const isDesktopSize = window.innerWidth >= 1100
+
+    function cursorMove(e) {
+      const cAttribute = e.target.getAttribute("cursor-type")
+      const screenHeight = window.innerHeight
+
+      $cursor.style.top = `${e.clientY}px`
+      $cursor.style.left = `${e.clientX}px`
+
+      $cursor.animate({
+        top: `${e.clientY}px`,
+        left: `${e.clientX}px`
+      }, { duration: 150, fill: "forwards" })
+
+      if (e.target.hasAttribute("cursor-type"))
+        $cursor.classList.add(cAttribute)
+      else
+        $cursor.classList = ""
+    }
+
+    if (isDesktopSize) {
+      document.addEventListener("mousemove", cursorMove)
+    }
+  </script>
+</body>
+
+</html>
