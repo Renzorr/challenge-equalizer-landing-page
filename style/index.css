@@ -107,6 +107,7 @@ main {
 
 /* HEADER */
 .header {
+  display: flex;
   padding-top: 60px;
 }
 
