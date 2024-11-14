@@ -108,7 +108,6 @@
 
     function cursorMove(e) {
       const cAttribute = e.target.getAttribute("cursor-type")
-      const screenHeight = window.innerHeight
 
       $cursor.style.top = `${e.clientY}px`
       $cursor.style.left = `${e.clientX}px`
@@ -116,7 +115,8 @@
       $cursor.animate({
         top: `${e.clientY}px`,
         left: `${e.clientX}px`
-      }, { duration: 150, fill: "forwards" })
+      }, { duration: 200, fill: "forwards" }
+      )
 
       if (e.target.hasAttribute("cursor-type"))
         $cursor.classList.add(cAttribute)
@@ -124,7 +124,9 @@
         $cursor.classList = ""
     }
 
+
     if (isDesktopSize) {
+      $cursor.animate({ top: `-100%`, left: `50%` }, { duration: 800 })
       document.addEventListener("mousemove", cursorMove)
     }
   </script>
